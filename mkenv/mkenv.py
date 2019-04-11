@@ -9,26 +9,32 @@ class Mkenv():
         self.name = name
         self.path = Path.cwd() / self.name
 
-    def createProject(self):
-
+    def _createProject(self):
+        '''
+            Factory method to create all needed files and installs virtualenv.
+        '''
         try:
-            self.createDirectory()
-            self.createFile()
-            self.createSetup()
-            self.installVenv()
-            return True
+            self._createDirectory()
+            self._createFile()
+            self._createSetup()
+            self._installVenv()
 
         except FileExistsError as err:
             print(f'Error creating path! Error: {err}')
-            return False
 
-    def installVenv(self):
+    def _installVenv(self):
+        '''
+            Run's python's virtualenv in that target path.
+        '''
         venv_path = self.path / 'venv'
 
         subprocess.call(["python3", "-m", "venv", f"{venv_path}"])
         print(f"Creating venv in: {venv_path}")
 
-    def createFile(self):
+    def _createFile(self):
+        '''
+            Create's target file path.
+        '''
         file_path = self.path / self.name / f'{self.name}.py'
 
         # creates file "/folder/folder/file.py"
@@ -38,7 +44,10 @@ class Mkenv():
         file_path.chmod(227)
         print(f"Changed mode: 774 for {self.name}.py")
 
-    def createSetup(self):
+    def _createSetup(self):
+        '''
+            Create's setup files.
+        '''
         setup_path = self.path / 'setup.py'
         readme_path = self.path / 'README.md'
 
@@ -47,7 +56,10 @@ class Mkenv():
         # create README.md
         readme_path.write_text(f'{self.name}')
 
-    def createDirectory(self):
+    def _createDirectory(self):
+        '''
+            Create's needed venv directories.
+        '''
         venv_path = self.path / 'venv'
         file_path = self.path / self.name
 
@@ -57,8 +69,3 @@ class Mkenv():
         # creates venv "/folder/venv"
         Path.mkdir(venv_path)
         print(f"Venv created: {venv_path}")
-
-    def activate(self):
-        #TODO: DOES NOT WORK!
-        activate_venv = subprocess.Popen([f'source {self.name}/venv/bin/activate'], shell=True)
-        print(activate_venv.communicate())

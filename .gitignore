@@ -1,1 +1,3 @@
 /venv
+/mkenv.egg-info
+/mkenv/__pycache__
