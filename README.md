@@ -1,15 +1,15 @@
-# mkenv
+# bake 
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
 
-`mkenv` is a script that automates project creation in a LINUX environment. The script creates the following directory files:
+`bake` is a script that automates project creation in a LINUX environment. The script creates the following directory files:
 
-- PROJECT\PROJECT\PROJECT.py
-- PROJECT\README.md
-- PROJECT\setup.py
-- PROJECT\venv
+- CAKE\CAKE\cake.py
+- CAKE\README.md
+- CAKE\setup.py
+- CAKE\venv
 
-It also installs Pythons virtualenv in PROJECT\venv
+It also installs Pythons virtualenv in CAKE\venv
 
 ## Dependencies
 None
@@ -20,17 +20,17 @@ Clone the project.
 ```sh
 pip3.7 install --editable .
 ```
-in \mkenv directory.
+in \cake directory.
 
 ## Usage
 
 ```sh
-usage: mkenv [-h] [--filename FILENAME] [--version]
+usage: cake [-h] [--cake FILENAME] [--version]
 
-mkenv - automated dev environment.
+cake - automated dev environment.
 
 optional arguments:
   -h, --help           show this help message and exit
-  --filename FILENAME  desired filename for project.
+  --cake CAKE          desired filename for project.
   --version            print "mkenv" version.
 ```

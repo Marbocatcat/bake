@@ -3,7 +3,7 @@ from pathlib import Path
 import subprocess
 
 
-class Mkenv():
+class Bake():
 
     def __init__(self, name):
         self.name = name
@@ -11,24 +11,24 @@ class Mkenv():
         self.venv_path = self.path / 'venv'
         self.file_path = self.path / self.name / f'{self.name}.py'
 
-    def _createProject(self):
+    def _create_project(self):
         """Factory method to create all needed files and installs virtualenv."""
         try:
-            self._createDirectory()
-            self._createFile()
-            self._createSetup()
-            self._installVenv()
+            self._create_directory()
+            self._create_file()
+            self._create_setup()
+            self._install_venv()
 
         except FileExistsError as err:
             print(f'Error creating path! Error: {err}')
 
-    def _installVenv(self):
+    def _install_venv(self):
         """Run's python's virtualenv in that target path."""
 
         subprocess.call(["python3", "-m", "venv", f"{self.venv_path}"])
         print(f"Creating venv in: {self.venv_path}")
 
-    def _createFile(self):
+    def _create_file(self):
         """Create's target file path."""
         mode = 0o772
 
@@ -39,7 +39,7 @@ class Mkenv():
         self.file_path.chmod(mode)
         print(f"Changed mode: {mode} for {self.name}.py")
 
-    def _createSetup(self):
+    def _create_setup(self):
         """Create's setup files."""
         setup_path = self.path / 'setup.py'
         readme_path = self.path / 'README.md'
@@ -50,9 +50,9 @@ class Mkenv():
         # create README.md
         readme_path.write_text(f'{self.name}')
         # create .gitignore
-        git_ignore.write_text('/venv/\n/mkenv.egg-info\n/mkenv/__pycache__')
+        git_ignore.write_text('/venv/\n/bake.egg-info\n/bake/__pycache__')
 
-    def _createDirectory(self):
+    def _create_directory(self):
         """Create's needed venv directories."""
         file_path = self.path / self.name
 
