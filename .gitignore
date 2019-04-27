@@ -1,3 +1,4 @@
 /venv
+/.idea
 /bake.egg-info
 /bake/__pycache__

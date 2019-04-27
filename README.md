@@ -32,5 +32,5 @@ cake - automated dev environment.
 optional arguments:
   -h, --help           show this help message and exit
   --cake CAKE          desired filename for project.
-  --version            print "mkenv" version.
+  --version            print "cake" version.
 ```
