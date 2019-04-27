@@ -2,14 +2,14 @@
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
 
-`mkenv` is a script that automates project creating in a LINUX environment. The script creates the following directory files:
+`mkenv` is a script that automates project creation in a LINUX environment. The script creates the following directory files:
 
 - PROJECT\PROJECT\PROJECT.py
 - PROJECT\README.md
 - PROJECT\setup.py
 - PROJECT\venv
 
-It also installs Pythons virtualenv.
+It also installs Pythons virtualenv in PROJECT\venv
 
 ## Dependencies
 None
