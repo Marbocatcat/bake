@@ -11,7 +11,6 @@ class Mkenv():
         self.venv_path = self.path / 'venv'
         self.file_path = self.path / self.name / f'{self.name}.py'
 
-
     def _createProject(self):
         """Factory method to create all needed files and installs virtualenv."""
         try:
