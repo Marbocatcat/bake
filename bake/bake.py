@@ -3,7 +3,7 @@ from pathlib import Path
 import subprocess
 
 
-class Bake():
+class Bake:
 
     def __init__(self, name):
         self.name = name
@@ -11,7 +11,7 @@ class Bake():
         self.venv_path = self.path / 'venv'
         self.file_path = self.path / self.name / f'{self.name}.py'
 
-    def _create_project(self):
+    def _create_cake(self):
         """Factory method to create all needed files and installs virtualenv."""
         try:
             self._create_directory()
@@ -21,6 +21,7 @@ class Bake():
 
         except FileExistsError as err:
             print(f'Error creating path! Error: {err}')
+            raise FileExistsError
 
     def _install_venv(self):
         """Run's python's virtualenv in that target path."""

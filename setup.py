@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'bake',
-    version = '0.1.1',
+    version = '0.1.2',
     author = 'Mar Bocatcat',
     author_email = 'mar.bocatcat@gmail.com',
     description = 'automation of my project environment',

@@ -5,14 +5,15 @@ import argparse
 from bake import Bake
 from .__init__ import __version__
 
+#some stuff
 
 def get_args():
     """Get script arguments."""
-    description = "bake - automated dev environment."
+    description = "bake - automated dev environment creation."
 
     arg = argparse.ArgumentParser(description=description)
 
-    arg.add_argument("--cake", help="desired filename for project.")
+    arg.add_argument("--cake", type=str, default="ERROR", help="desired filename for project.")
 
     arg.add_argument("--version", action="store_true", help="print \"bake\" \
                     version.")
@@ -31,12 +32,20 @@ def main():
     args = get_args()
     process_args(args)
 
-    try:
-        create_env = Bake(args.cake)
-        create_env._create_project()
+    if args.cake is "ERROR":
+        print("Please add cake!")
+        exit(0)
 
-    except TypeError as error:
-        print(f"Please add a filename with: \"--cake\".")
+    if args.cake.isnumeric() is False:
+
+        try:
+            bake = Bake(args.cake)
+            bake._create_cake()
+
+        except TypeError as error:
+            print(f"Please add a filename with: \"--cake\".")
+    else:
+        print("Cake can't be just integers.")
 
 
 if __name__ == '__main__':
