@@ -57,9 +57,15 @@ class Bake:
         """Create's needed venv directories."""
         file_path = self.path / self.name
 
-        # creates directory folder
-        Path.mkdir(file_path, parents=True)
-        print(f"Path created: {self.path}")
-        # creates venv "/folder/venv"
-        Path.mkdir(self.venv_path)
-        print(f"Venv created: {self.venv_path}")
+        try:
+            Path.mkdir(file_path, parents=True)
+            print(f"Path created: {self.path}")
+
+            Path.mkdir(self.venv_path)
+            print(f"Venv created: {self.venv_path}")
+
+            return 1
+
+        except FileExistsError as error:
+            print("File already exists!")
+            raise FileExistsError
