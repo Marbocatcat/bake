@@ -5,10 +5,10 @@ import argparse
 from bake import Bake
 from .__init__ import __version__
 
-#some stuff
 
 def get_args():
     """Get script arguments."""
+
     description = "bake - automated dev environment creation."
 
     arg = argparse.ArgumentParser(description=description)
@@ -29,6 +29,7 @@ def process_args(args):
 
 def main():
     """Main script function."""
+
     args = get_args()
     process_args(args)
 

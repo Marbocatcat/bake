@@ -8,8 +8,8 @@ class Bake:
     def __init__(self, name):
         self.name = name
         self.path = Path.cwd() / self.name
-        self.venv_path = self.path / 'venv'
-        self.file_path = self.path / self.name / f'{self.name}.py'
+        self.venv_path = self.path / "venv"
+        self.file_path = self.path / self.name / f"{self.name}.py"
 
     def _create_cake(self):
         """Factory method to create all needed files and installs virtualenv."""
@@ -44,7 +44,7 @@ class Bake:
         """Create's setup files."""
         setup_path = self.path / 'setup.py'
         readme_path = self.path / 'README.md'
-        git_ignore = self.path /'.gitignore'
+        git_ignore = self.path / '.gitignore'
 
         # create setup.py
         setup_path.write_text('#/env/bin python3')
